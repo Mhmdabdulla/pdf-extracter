@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 
 import { ErrorHandler } from './web/middlewares/ErrorHandler.js';
 import authRoutes from './web/routes/auth.routes.js';
+import pdfRoutes from './web/routes/pdf.routes.js';
 
 dotenv.config();
 connectDB();
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/pdf', pdfRoutes);
 
 const PORT = process.env.PORT || 4000
 
