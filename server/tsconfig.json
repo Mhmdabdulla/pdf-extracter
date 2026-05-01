@@ -1,36 +1,13 @@
 {
   "compilerOptions": {
-    /* File Layout */
-    "rootDir": "./src",
-    "outDir": "./dist",
-
-    /* Environment Settings */
+    "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "target": "ESNext",
-    "lib": ["ESNext"],
-    "types": ["node"],
-
-    /* Interop & Compatibility */
-    "esModuleInterop": true, 
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-
-    /* Other Outputs */
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    /* Stricter Typechecking Options */
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    /* Recommended Options */
-    "jsx": "react-jsx",
-    "isolatedModules": true,
-    "moduleDetection": "force"
+    "esModuleInterop": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+  "exclude": ["node_modules", "dist"]
 }
