@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
-    "build": "rimraf dist && tsc",
+    "build": "npx rimraf dist && tsc",
     "test": "jest",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'"
