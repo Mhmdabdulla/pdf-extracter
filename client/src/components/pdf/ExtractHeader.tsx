@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const ExtractHeader = () => {
   const { 
-    pages, 
+    // pages, 
     selectedPages, 
  
     uploadedPdfId, 
@@ -17,8 +17,8 @@ export const ExtractHeader = () => {
   
   const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const allSelected = pages.length > 0 && selectedPages.length === pages.length;
+
+  // const allSelected = pages.length > 0 && selectedPages.length === pages.length;
 
   const handleExtract = async () => {
     if (selectedPages.length === 0) {
