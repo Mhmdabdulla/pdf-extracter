@@ -13,7 +13,7 @@ connectDB();
 
 const app = express();
 
-const allowedOrigin = process.env.CLIENT_URL;
+const allowedOrigin = process.env.CLIENT_URL || "https://pdf-extracter-one.vercel.app";
 
 app.use(cors({
     origin: allowedOrigin,
