@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
-    "build": "rimraf dist && tsc",
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && tsc",
     "postinstall": "npm run build",
     "test": "jest",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
