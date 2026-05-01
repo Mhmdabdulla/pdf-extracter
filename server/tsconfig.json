@@ -1,12 +1,35 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",          // This is the key change
-    "moduleResolution": "NodeNext", // Ensures imports work correctly
-    "outDir": "./dist",
+    /* File Layout */
     "rootDir": "./src",
-    "esModuleInterop": true,
-    "skipLibCheck": true
+    "outDir": "./dist",
+
+    /* Environment Settings */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["node"],
+
+    /* Interop & Compatibility */
+    "esModuleInterop": true, 
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* Other Outputs */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* Stricter Typechecking Options */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* Recommended Options */
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "moduleDetection": "force"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
