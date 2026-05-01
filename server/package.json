@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/app.js",
     "dev": "tsx watch src/app.ts",
-    "build": "rimraf dist && tsc",
+    "build": " tsc",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
