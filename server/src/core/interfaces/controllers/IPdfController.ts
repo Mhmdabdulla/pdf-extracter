@@ -6,4 +6,5 @@ export interface IPdfController {
   saveMetadata(req: AuthRequest, res: Response, next: NextFunction): Promise<void>;
   getUserDocs(req: AuthRequest, res: Response, next: NextFunction): Promise<void>;
   extractPages(req: AuthRequest, res: Response, next: NextFunction): Promise<void>;
+  getDownloadUrl(req: AuthRequest, res: Response, next: NextFunction): Promise<void>;
 }

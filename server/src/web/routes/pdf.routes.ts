@@ -13,5 +13,6 @@ router.post("/presigned-url", pdfController.getPresignedUrl);
 router.post("/metadata", pdfController.saveMetadata);
 router.get("/", pdfController.getUserDocs);
 router.post("/extract", pdfController.extractPages);
+router.get("/:pdfId/download", pdfController.getDownloadUrl);
 
 export default router;

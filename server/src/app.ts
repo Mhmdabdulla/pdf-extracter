@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
-app.use('/api/pdf', pdfRoutes);
+app.use('/api/pdfs', pdfRoutes);
 
 const PORT = process.env.PORT || 4000
 

@@ -40,6 +40,20 @@ export class PdfService implements IPdfService {
     return this.pdfRepository.findByUserId(userId);
   }
 
+    /**
+   * Retrieves a specific PDF for a user.
+   */
+  async getUserPdf(userId: string, pdfId: string): Promise<PdfEntity> {
+    const pdf = await this.pdfRepository.findById(pdfId);
+    if (!pdf) {
+      throw new AppError(AppMessages.PDF_NOT_FOUND, HttpStatusCode.NOT_FOUND);
+    }
+    if (pdf.userId !== userId) {
+      throw new AppError(AppMessages.UNAUTHORIZED_PDF_ACCESS, HttpStatusCode.FORBIDDEN);
+    }
+    return pdf;
+  }
+
   /**
    * Extracts specific pages from an existing PDF, creates a new PDF,
    * uploads it to S3, and saves its metadata.
@@ -97,4 +111,13 @@ export class PdfService implements IPdfService {
 
     return newPdfEntity;
   }
+
+   /**
+   * Generates a presigned download URL for a file.
+   */
+  async getDownloadUrl(key: string): Promise<string> {
+    return this.fileStorage.getDownloadUrl(key);
+  }
+
+
 }

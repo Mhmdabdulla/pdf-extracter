@@ -23,6 +23,7 @@ export enum AppMessages {
   PDF_NOT_FOUND = "PDF not found",
   UNAUTHORIZED_PDF_ACCESS = "Unauthorized to access this PDF",
   NO_VALID_PAGES = "No valid pages selected for extraction",
+  PDF_ID_MISSING = "PDF file ID is missing. Please upload the file again.",
 
   // General Messages
   INTERNAL_SERVER_ERROR = "Something went wrong",

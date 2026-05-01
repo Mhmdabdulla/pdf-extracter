@@ -76,4 +76,23 @@ export class PdfController implements IPdfController {
       next(error);
     }
   };
+
+  getDownloadUrl = async (req: AuthRequest, res: Response, next: NextFunction) => {
+    try {
+      const { pdfId } = req.params;
+      const userId = req.user?.id;
+      const parsedPdfId = Array.isArray(pdfId) ? pdfId[0] : pdfId;
+
+      if (!userId) throw new AppError(AppMessages.UNAUTHORIZED, HttpStatusCode.UNAUTHORIZED);
+      if (!parsedPdfId) throw new AppError(AppMessages.PDF_ID_MISSING, HttpStatusCode.BAD_REQUEST);
+
+      const pdf = await this.pdfService.getUserPdf(userId, parsedPdfId);
+      const downloadUrl = await this.pdfService.getDownloadUrl(pdf.s3Key);
+
+      res.status(HttpStatusCode.OK).json({ success: true, data: { downloadUrl } });
+    } catch (error) {
+      next(error);
+    }
+  };
+
 }

@@ -7,27 +7,26 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import {type IFileStorage } from "../../core/interfaces/repositories/IFileStorage.js";
 import { AppError } from "../../web/middlewares/AppError.js";
 import { HttpStatusCode } from "../../utils/constants.js";
+import s3Client from "../../config/s3.js";
+import { access } from "node:fs";
 
 export class S3StorageRepository implements IFileStorage {
   private s3Client: S3Client;
   private bucketName: string;
 
   constructor() {
-    this.s3Client = new S3Client({
-      region: process.env.AWS_REGION || "us-east-1",
-      credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-      },
-    });
+    console.log("Initializing S3StorageRepository with bucket:", process.env.AWS_S3_BUCKET_NAME, "and region:", process.env.AWS_REGION , 'secret access key:', process.env.AWS_SECRET_ACCESS_KEY ? '***' : 'not set , access key id:', process.env.AWS_ACCESS_KEY_ID ? '***' : 'not set ');
+    this.s3Client = s3Client
     this.bucketName = process.env.AWS_S3_BUCKET_NAME || "pdf-extractor-bucket";
   }
 
   async getUploadUrl(key: string, contentType: string): Promise<string> {
+    console.log("Generating presigned URL for S3 upload with key:", key, "and contentType:", contentType);
     const command = new PutObjectCommand({
       Bucket: this.bucketName,
       Key: key,
       ContentType: contentType,
+      ChecksumAlgorithm: undefined
     });
     // URL expires in 15 minutes
     return await getSignedUrl(this.s3Client, command, { expiresIn: 900 });
